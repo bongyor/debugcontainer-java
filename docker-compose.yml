@@ -1,0 +1,16 @@
+version: '3.8'
+name: debug-container
+services:
+  local-ssh:
+    image: debug-container
+    build:
+      context: .
+      args:
+        DOCKER_BUILDKIT: 1
+    container_name: debug-container
+    environment:
+      TZ: Europe/Budapest
+    restart: unless-stopped
+    ports:
+      - "2222:22"
+      - "1080:1080"
